@@ -167,7 +167,7 @@
       "tabBarDashboardLabel": "Dashboard",
 
       "dataMachineValidation": {
-        "required": "{{field}} is required",
+        "required": "{{field}} is required"
       },
       "dataMachineFieldFields": {
         "machineName": "Machine",
@@ -291,6 +291,12 @@
       "aboutUsDescription":"PT. Gading Murni is the largest and oldest company in Indonesia in the sale of office equipment consisting of retail, wholesale, and office equipment suppliers.",
 
       "logoutLabel": "Logout",
+      "deleteAccountLabel": "Delete Account",
+      "deleteAccountConfirmationTitle": "Delete Account",
+      "deleteAccountConfirmationMessage": "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.",
+      "deleteAccountSuccess": "Account deleted successfully",
+      "deleteAccountError": "Failed to delete account",
+      "deleteAccountReasonPlaceholder": "Reason for deletion (optional)",
 
 
       "customerData": "Customer Data",

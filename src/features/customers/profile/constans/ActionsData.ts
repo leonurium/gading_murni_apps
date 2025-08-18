@@ -8,6 +8,7 @@ export type TActions = {
   label: string;
   icons: string[];
   navigateTo?: 'EditProfile' | 'ChangePassword' | 'Setting' | 'AboutUs';
+  action?: 'logout' | 'deleteAccount';
 };
 
 export const getActionsData = (theme: Theme, t: TFunction): TActions[] => [
@@ -50,6 +51,16 @@ export const getActionsData = (theme: Theme, t: TFunction): TActions[] => [
       ICONS.icnArrowNarrowRight(theme.colors.headerText),
     ],
     navigateTo: 'AboutUs',
+  },
+  {
+    id: 'delete-account',
+    colors: [theme.colors.errorText, theme.colors.errorText],
+    label: t('deleteAccountLabel'),
+    icons: [
+      ICONS.icnTrash(theme.colors.errorText),
+      ICONS.icnArrowNarrowRight(theme.colors.errorText),
+    ],
+    action: 'deleteAccount',
   },
   {
     id: 'logout',

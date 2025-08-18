@@ -22,6 +22,10 @@ import {
 } from '../../../@types/location';
 import ApiClient from '../../ApiClient';
 import {AxiosRequestConfig} from 'axios';
+import {
+  DeleteCustomerAccountPayload,
+  DeleteCustomerAccountResponse,
+} from '../../../@types/customer';
 
 export const getCustomer = async (config?: AxiosRequestConfig) => {
   try {
@@ -226,6 +230,20 @@ export const getBranchesDetail = async (
       `/api/v1/branch/${branchId}`,
     );
 
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteCustomerAccount = async (
+  payload: DeleteCustomerAccountPayload,
+): Promise<DeleteCustomerAccountResponse> => {
+  try {
+    const response: DeleteCustomerAccountResponse = await ApiClient.delete(
+      '/api/v1/customer/profile',
+      {data: payload},
+    );
     return response;
   } catch (error) {
     throw error;

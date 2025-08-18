@@ -191,7 +191,7 @@ export const useAfterServiceAdminServices = (): UseMutationResult<
         service_cost: Number(payload.data.serviceItems.serviceCost),
         list: payload.data.serviceItems.list.map(item => ({
           sparepart_name: item.sparepartName,
-          note: item.note,
+          note: item.note ?? '',
           type: item.type,
           cost: Number(item.cost),
           amount: Number(item.amount),

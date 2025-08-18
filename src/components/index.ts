@@ -17,3 +17,4 @@ export {default as FormUploadMultipleImages} from './FormUploadMultipleImages';
 export {default as FormUploadImage} from './FormUploadImage';
 export {default as FormMasterMachinesSelector} from './FormMasterMachinesSelector';
 export {default as FirebaseProvider} from './FirebaseProvider';
+export {default as DeleteAccountModal} from './DeleteAccountModal';

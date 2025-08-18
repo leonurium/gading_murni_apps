@@ -18,12 +18,15 @@ import {
   getVillagesDetail,
   updateCustomerProfile,
   updateDataCompletionCustomer,
+  deleteCustomerAccount,
 } from '../services/customers/CustomerServices';
 import {
   CustomerDataCompletionPayload,
   CustomerProfilePayload,
   CustomerResponse,
   LocationPayload,
+  DeleteCustomerAccountPayload,
+  DeleteCustomerAccountResponse,
 } from '../../@types/customer';
 import {ConfigInfiniteQuery, getQueryKey} from '../../@types/query';
 import {
@@ -63,6 +66,17 @@ export const useCustomerProfile = () =>
     mutationKey: ['customer-profile'],
     mutationFn: (payload: CustomerProfilePayload) =>
       updateCustomerProfile(payload),
+  });
+
+export const useDeleteCustomerAccount = (): UseMutationResult<
+  DeleteCustomerAccountResponse,
+  Error,
+  DeleteCustomerAccountPayload
+> =>
+  useMutation({
+    mutationKey: ['delete-customer-account'],
+    mutationFn: (payload: DeleteCustomerAccountPayload) =>
+      deleteCustomerAccount(payload),
   });
 
 export const useGetLocation = () =>

@@ -40,6 +40,8 @@ import {
 import {UploadPhotoResponse} from '../../../../@types/support';
 import Toast from 'react-native-simple-toast';
 import {config} from '../../../../constants/Configs';
+import {DeleteAccountModal} from '../../../../components';
+import {useDeleteCustomerAccount} from '../../../../api/hooks/useCustomer';
 
 const Profile: React.FC = () => {
   const theme = useTheme() as Theme;
@@ -50,9 +52,11 @@ const Profile: React.FC = () => {
   const {data, refetch} = useCustomer();
   const {mutate} = useUploadPhoto();
   const {mutate: mutateCustomerProfile} = useCustomerProfile();
+  const {mutate: deleteAccount, isPending: isDeleting} = useDeleteCustomerAccount();
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   const onPressHandle = (item: TActions) => {
-    if (item.id === 'logout') {
+    if (item.action === 'logout' || item.id === 'logout') {
       dispatch(setVerifiedUser(false));
       dispatch(setToken(null));
       const logoutNavigate =
@@ -61,9 +65,39 @@ const Profile: React.FC = () => {
         index: 0,
         routes: [{name: 'Auth', state: {routes: [{name: 'Login'}]}}],
       });
+    } else if (item.action === 'deleteAccount') {
+      setShowDeleteModal(true);
     } else {
-      navigation.navigate(item.navigateTo);
+      if (item.navigateTo) {
+        navigation.navigate(item.navigateTo);
+      }
     }
+  };
+
+  const handleDeleteAccount = (reason?: string) => {
+    deleteAccount(
+      {
+        confirmation: 'DELETE_ACCOUNT',
+        ...(reason ? {reason} : {}),
+      },
+      {
+      onSuccess: () => {
+        setShowDeleteModal(false);
+        Toast.show(t('deleteAccountSuccess'), Toast.SHORT);
+        dispatch(setVerifiedUser(false));
+        dispatch(setToken(null));
+        const logoutNavigate =
+          navigation as unknown as NativeStackNavigationProp<RootNavigatorParamList>;
+        logoutNavigate.reset({
+          index: 0,
+          routes: [{name: 'Auth', state: {routes: [{name: 'Login'}]}}],
+        });
+      },
+      onError: () => {
+        Toast.show(t('deleteAccountError'), Toast.SHORT);
+      },
+      },
+    );
   };
 
   const handleUpload = () => {
@@ -218,6 +252,12 @@ const Profile: React.FC = () => {
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
+      <DeleteAccountModal
+        visible={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={handleDeleteAccount}
+        loading={isDeleting}
+      />
     </View>
   );
 };

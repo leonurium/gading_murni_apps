@@ -34,10 +34,7 @@ import {
   ImagePickerResponse,
   launchImageLibrary,
 } from 'react-native-image-picker';
-import {
-  useAdminProfile,
-  useAdminProfileDetail,
-} from '../../../../api/hooks/useAdminServices';
+import {useAdminProfile, useAdminProfileDetail} from '../../../../api/hooks/useAdminServices';
 import {config} from '../../../../constants/Configs';
 import Toast from 'react-native-simple-toast';
 
@@ -52,7 +49,7 @@ const Profile: React.FC = () => {
   const {mutate: mutateAdminProfile} = useAdminProfile();
 
   const onPressHandle = (item: TActions) => {
-    if (item.id === 'logout') {
+    if (item.action === 'logout') {
       dispatch(setToken(null));
       dispatch(setRoleId(null));
       const logoutNavigate =
