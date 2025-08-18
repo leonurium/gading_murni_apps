@@ -290,6 +290,12 @@
       "aboutUsDescription":"PT. Gading Murni adalah perusahaan terbesar dan tertua di Indonesia dalam penjualan peralatan kantor yang terdiri dari retail, grosir dan supplier alat kantor.",
 
       "logoutLabel": "Keluar",
+      "deleteAccountLabel": "Hapus Akun",
+      "deleteAccountConfirmationTitle": "Hapus Akun",
+      "deleteAccountConfirmationMessage": "Apakah Anda yakin ingin menghapus akun Anda? Tindakan ini tidak dapat dibatalkan dan semua data Anda akan dihapus secara permanen.",
+      "deleteAccountSuccess": "Akun berhasil dihapus",
+      "deleteAccountError": "Gagal menghapus akun",
+      "deleteAccountReasonPlaceholder": "Alasan penghapusan (opsional)",
 
       "customerData": "Data Customer",
       "changeCustomerDataLabel": "Menerima Pesanan",

@@ -108,3 +108,14 @@ export type LocationPayload = {
   geo_latitude: string;
   geo_longitude: string;
 };
+
+export type DeleteCustomerAccountPayload = {
+  confirmation: 'DELETE_ACCOUNT';
+  reason?: string;
+};
+
+export type DeleteCustomerAccountResponse = {
+  success: boolean;
+  message: string;
+  data: unknown | null;
+};

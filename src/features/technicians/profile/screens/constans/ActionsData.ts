@@ -8,6 +8,7 @@ export type TActions = {
   label: string;
   icons: string[];
   navigateTo?: 'EditProfile' | 'ChangePassword' | 'Setting' | 'AboutUs';
+  action?: 'logout';
 };
 
 export const getActionsData = (theme: Theme, t: TFunction): TActions[] => [
@@ -59,5 +60,6 @@ export const getActionsData = (theme: Theme, t: TFunction): TActions[] => [
       ICONS.icnArrowRightFromBracket(theme.colors.errorText),
       ICONS.icnArrowNarrowRight(theme.colors.errorText),
     ],
+    action: 'logout',
   },
 ];

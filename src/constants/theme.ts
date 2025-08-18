@@ -293,6 +293,11 @@ export const ICONS = {
   ) => `<svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.975006 8.5999L5.02501 4.9999L0.975006 1.3999" stroke=${color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`,
+  icnTrash: (color: string) =>
+    `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6H5H21M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke=${color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10 11V17M14 11V17" stroke=${color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
   icnSearch:
     '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="1.67 1.3 11 11"><path d="M3.15339 2.75598C5.13394 0.810507 8.34506 0.810507 10.3256 2.75598C12.2393 4.63574 12.3039 7.64399 10.5195 9.59999L12.6341 11.6773C12.6787 11.7212 12.6793 11.7929 12.6355 11.8376C12.635 11.838 12.6345 11.8385 12.6341 11.839L12.1981 12.2673C12.154 12.3106 12.0833 12.3106 12.0393 12.2673L9.9054 10.171C7.91415 11.7376 4.9993 11.6144 3.15339 9.80117C1.17283 7.85569 1.17283 4.70145 3.15339 2.75598ZM3.75107 3.34308C2.10061 4.96431 2.10061 7.59284 3.75107 9.21407C5.40153 10.8353 8.07746 10.8353 9.72793 9.21407C11.3784 7.59284 11.3784 4.96431 9.72793 3.34308C8.07746 1.72185 5.40153 1.72185 3.75107 3.34308Z" fill="#72849A" fill-opacity="0.5"></path></svg>',
   icnIndonesia:
@@ -349,7 +354,7 @@ export const IMAGES = {
 
   scanBarcodeFrame: require('../assets/images/vectors/scan-barcode-frame.png'),
 
-  bannerOne: require('../assets/images/global/banner-one.jpg'),
+  bannerOne: require('../assets/images/global/banner-three.jpg'),
   bannerTwo: require('../assets/images/global/banner-two.jpg'),
   bannerThree: require('../assets/images/global/banner-three.jpg'),
 };

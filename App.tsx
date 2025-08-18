@@ -10,7 +10,9 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/store/store';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 import {Alert, Platform} from 'react-native';
-import Firebase from './src/firebase';
+import FirebaseService from './src/firebase';
+import {Notification} from './src/firebase';
+import FirebaseProvider from './src/components/FirebaseProvider';
 
 const queryClient = new QueryClient({});
 
@@ -66,9 +68,29 @@ const App: React.FC = () => {
       }
     };
 
+    const initializeFirebase = async () => {
+      try {
+        // Initialize Firebase first
+        await FirebaseService.initialize();
+        
+        // Then start notification service (Firebase is now ready)
+        await Notification.start();
+        
+        console.log('Firebase and notification services initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize Firebase services:', error);
+        // Don't throw here - let the FirebaseProvider handle the error state
+      }
+    };
+
     checkAndRequestPermissions();
-    Firebase.Notification.start();
+    initializeFirebase();
   }, []);
+
+  const handleFirebaseError = (error: Error) => {
+    console.error('Firebase error in App component:', error);
+    // You can add additional error handling here, such as showing a user-friendly error message
+  };
 
   return (
     <Provider store={store}>
@@ -77,7 +99,9 @@ const App: React.FC = () => {
           <SafeAreaView>
             <QueryClientProvider client={queryClient}>
               <ThemeProvider>
-                <Routes />
+                <FirebaseProvider onError={handleFirebaseError}>
+                  <Routes />
+                </FirebaseProvider>
               </ThemeProvider>
             </QueryClientProvider>
           </SafeAreaView>
