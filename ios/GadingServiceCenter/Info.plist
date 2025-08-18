@@ -31,52 +31,48 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+  <key>UIAppFonts</key>
+  <array>
+    <string>Figtree-Black.ttf</string>
+    <string>Figtree-BlackItalic.ttf</string>
+    <string>Figtree-Bold.ttf</string>
+    <string>Figtree-BoldItalic.ttf</string>
+    <string>Figtree-ExtraBold.ttf</string>
+    <string>Figtree-ExtraBoldItalic.ttf</string>
+    <string>Figtree-Italic.ttf</string>
+    <string>Figtree-Light.ttf</string>
+    <string>Figtree-LightItalic.ttf</string>
+    <string>Figtree-Medium.ttf</string>
+    <string>Figtree-MediumItalic.ttf</string>
+    <string>Figtree-Regular.ttf</string>
+    <string>Figtree-SemiBold.ttf</string>
+    <string>Figtree-SemiBoldItalic.ttf</string>
+  </array>
 	<key>NSCameraUsageDescription</key>
-	<string>Gading service needs access to your Camera.</string>
+	<string>We use the camera to capture photos or scan machine parts for service and maintenance records.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Gading service needs access to your Location.</string>
+	<string>We use your location to help assign the nearest service technician and record service visit locations.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Gading service needs access to your Location.</string>
+	<string>We use your location to help assign the nearest service technician and record service visit locations.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Gading service needs access to your Location.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Gading service needs access to your Photo Library.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Gading service needs access to your Camera.</string>
+	<string>We use your location to help assign the nearest service technician and record service visit locations.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Gading service needs access to your Microphone.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Figtree-Black.ttf</string>
-		<string>Figtree-BlackItalic.ttf</string>
-		<string>Figtree-Bold.ttf</string>
-		<string>Figtree-BoldItalic.ttf</string>
-		<string>Figtree-ExtraBold.ttf</string>
-		<string>Figtree-ExtraBoldItalic.ttf</string>
-		<string>Figtree-Italic.ttf</string>
-		<string>Figtree-Light.ttf</string>
-		<string>Figtree-LightItalic.ttf</string>
-		<string>Figtree-Medium.ttf</string>
-		<string>Figtree-MediumItalic.ttf</string>
-		<string>Figtree-Regular.ttf</string>
-		<string>Figtree-SemiBold.ttf</string>
-		<string>Figtree-SemiBoldItalic.ttf</string>
-	</array>
+	<string>We use the microphone to record audio notes or voice descriptions during service requests.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We use your photo library so you can upload machine or part images for service requests.</string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen.storyboard</string>
+	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

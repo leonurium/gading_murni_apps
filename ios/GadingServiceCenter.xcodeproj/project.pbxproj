@@ -20,6 +20,7 @@
 		5D44AE32E5F742DEB67FE145 /* Figtree-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5177AEEFC4604E368999A76E /* Figtree-Regular.ttf */; };
 		639796176F1246B5BE90F57B /* Figtree-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12955BA50F0B4C1199CF0446 /* Figtree-Medium.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-GadingServiceCenter-GadingServiceCenterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-GadingServiceCenter-GadingServiceCenterTests.a */; };
+		7B2FB9E72DC20ED1006F150D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2FB9E62DC20ED1006F150D /* GoogleService-Info.plist */; };
 		7BCE06B2DFC24C17AAEC3429 /* Figtree-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460F13649E8A44999873FD7F /* Figtree-Italic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AC5A64657D3B4AC685630F67 /* Figtree-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4F91B3B215B447CBAB0E3A5 /* Figtree-Black.ttf */; };
@@ -63,6 +64,8 @@
 		5BE298CA93B6434CB6913946 /* Figtree-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Figtree-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-GadingServiceCenter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GadingServiceCenter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7524D5660EA349F8A703F2D9 /* Figtree-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-ExtraBold.ttf"; path = "../src/assets/fonts/Figtree-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7B2FB9E62DC20ED1006F150D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7B3806332DC21F010013D215 /* GadingServiceCenter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = GadingServiceCenter.entitlements; path = GadingServiceCenter/GadingServiceCenter.entitlements; sourceTree = "<group>"; };
 		7E8C4DBC3CD540ABA8215A00 /* Figtree-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Figtree-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GadingServiceCenter/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-GadingServiceCenter-GadingServiceCenterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GadingServiceCenter-GadingServiceCenterTests.release.xcconfig"; path = "Target Support Files/Pods-GadingServiceCenter-GadingServiceCenterTests/Pods-GadingServiceCenter-GadingServiceCenterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 		13B07FAE1A68108700A75B9A /* GadingServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
+				7B3806332DC21F010013D215 /* GadingServiceCenter.entitlements */,
+				7B2FB9E62DC20ED1006F150D /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -304,6 +309,7 @@
 				C600C96BF88D4B0198E8F8F1 /* Figtree-Light.ttf in Resources */,
 				BF83C84E0602464988AA036A /* Figtree-LightItalic.ttf in Resources */,
 				639796176F1246B5BE90F57B /* Figtree-Medium.ttf in Resources */,
+				7B2FB9E72DC20ED1006F150D /* GoogleService-Info.plist in Resources */,
 				2C731AB400044D92B3366630 /* Figtree-MediumItalic.ttf in Resources */,
 				5D44AE32E5F742DEB67FE145 /* Figtree-Regular.ttf in Resources */,
 				D6A42451B0694E149D4522DF /* Figtree-SemiBold.ttf in Resources */,
@@ -543,8 +549,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GadingServiceCenter/GadingServiceCenter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X284YVU8U7;
+				DEVELOPMENT_TEAM = VC83XAQ3UM;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GadingServiceCenter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,8 +566,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gadingservicecenter.app;
 				PRODUCT_NAME = GadingServiceCenter;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -571,8 +581,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GadingServiceCenter/GadingServiceCenter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X284YVU8U7;
+				DEVELOPMENT_TEAM = VC83XAQ3UM;
 				INFOPLIST_FILE = GadingServiceCenter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -584,8 +597,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gadingservicecenter.app;
 				PRODUCT_NAME = GadingServiceCenter;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
