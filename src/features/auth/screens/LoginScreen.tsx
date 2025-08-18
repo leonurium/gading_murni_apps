@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {FONTS_FAMILIES, IMAGES, SIZES} from '../../../constants/theme';
 import {FormInput, Button} from '../../../components';
@@ -29,7 +30,7 @@ import {AppDispatch} from '../../../store/store';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {setUserType, setToken, setRoleId} from '../../../store/userSlice';
 import {navigationRef} from '../../../navigations/navigationService';
-import Firebase from '../../../firebase';
+import {Notification} from '../../../firebase';
 
 type FormValues = {
   email: string;
@@ -67,8 +68,17 @@ const Login: React.FC = () => {
   }, []);
 
   const onFieldSubmit = async (values: FormValues): Promise<void> => {
-    const device_token = await Firebase.Notification.getToken();
-    if (device_token) {
+    try {
+      const device_token = await Notification.getToken();
+      if (!device_token) {
+        console.warn('No device token available. Blocking login.');
+        Alert.alert(
+          'Notifications required',
+          'Failed to get device token. Please enable notifications and try again.',
+        );
+        return;
+      }
+
       mutate(
         {username: values.email, password: values.password, device_token},
         {
@@ -105,6 +115,13 @@ const Login: React.FC = () => {
           },
         },
       );
+    } catch (error) {
+      console.error('Error getting device token:', error);
+      Alert.alert(
+        'Notifications required',
+        'Failed to get device token. Please enable notifications and try again.',
+      );
+      return;
     }
   };
 
