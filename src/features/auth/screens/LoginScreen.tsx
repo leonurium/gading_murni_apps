@@ -8,7 +8,6 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  Alert,
 } from 'react-native';
 import {FONTS_FAMILIES, IMAGES, SIZES} from '../../../constants/theme';
 import {FormInput, Button} from '../../../components';
@@ -70,17 +69,86 @@ const Login: React.FC = () => {
   const onFieldSubmit = async (values: FormValues): Promise<void> => {
     try {
       const device_token = await Notification.getToken();
-      if (!device_token) {
-        console.warn('No device token available. Blocking login.');
-        Alert.alert(
-          'Notifications required',
-          'Failed to get device token. Please enable notifications and try again.',
+      if (device_token) {
+        mutate(
+          {username: values.email, password: values.password, device_token},
+          {
+            onSuccess: data => {
+              const loginData = data as unknown as LoginResponse;
+              dispatch(setToken(loginData.data_body.token));
+              dispatch(setUserType(loginData.data_body.user_type));
+              if (loginData.data_body.user_type === UserType.CUSTOMER) {
+                if (!loginData.data_body.otp_verified) {
+                  navigationRef.reset({
+                    index: 0,
+                    routes: [
+                      {
+                        name: 'Otp',
+                        params: {
+                          email: loginData.data_body.user.email,
+                        },
+                      },
+                    ],
+                  });
+                } else {
+                  navigationRef.reset({
+                    index: 0,
+                    routes: [{name: 'CustomerHome'}],
+                  });
+                }
+              } else {
+                dispatch(setRoleId(loginData.data_body.user.role!.id));
+                navigationRef.reset({
+                  index: 0,
+                  routes: [{name: 'TechnicianHome'}],
+                });
+              }
+            },
+          },
         );
-        return;
+      } else {
+        console.warn('No device token available, proceeding without it');
+        mutate(
+          {username: values.email, password: values.password, device_token: ''},
+          {
+            onSuccess: data => {
+              const loginData = data as unknown as LoginResponse;
+              dispatch(setToken(loginData.data_body.token));
+              dispatch(setUserType(loginData.data_body.user_type));
+              if (loginData.data_body.user_type === UserType.CUSTOMER) {
+                if (!loginData.data_body.otp_verified) {
+                  navigationRef.reset({
+                    index: 0,
+                    routes: [
+                      {
+                        name: 'Otp',
+                        params: {
+                          email: loginData.data_body.user.email,
+                        },
+                      },
+                    ],
+                  });
+                } else {
+                  navigationRef.reset({
+                    index: 0,
+                    routes: [{name: 'CustomerHome'}],
+                  });
+                }
+              } else {
+                dispatch(setRoleId(loginData.data_body.user.role!.id));
+                navigationRef.reset({
+                  index: 0,
+                  routes: [{name: 'TechnicianHome'}],
+                });
+              }
+            },
+          },
+        );
       }
-
+    } catch (error) {
+      console.error('Error getting device token:', error);
       mutate(
-        {username: values.email, password: values.password, device_token},
+        {username: values.email, password: values.password, device_token: ''},
         {
           onSuccess: data => {
             const loginData = data as unknown as LoginResponse;
@@ -115,13 +183,6 @@ const Login: React.FC = () => {
           },
         },
       );
-    } catch (error) {
-      console.error('Error getting device token:', error);
-      Alert.alert(
-        'Notifications required',
-        'Failed to get device token. Please enable notifications and try again.',
-      );
-      return;
     }
   };
 

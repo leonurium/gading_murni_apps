@@ -62,14 +62,13 @@ export const registerValidationSchema = () =>
       ),
     phoneNumber: yup
       .string()
-      .matches(
-        /^(\+62|62|0)8[1-9][0-9]{6,9}$/,
+      .nullable()
+      .transform(value => (value === '' ? null : value))
+      .test(
+        'valid-phone-optional',
         i18n.t('registerFormValidation.phoneNumber'),
-      )
-      .required(
-        i18n.t('registerFormValidation.required', {
-          field: i18n.t('registerFieldFields.phoneNumber'),
-        }),
+        value =>
+          value == null || /^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(String(value)),
       ),
     password: yup
       .string()

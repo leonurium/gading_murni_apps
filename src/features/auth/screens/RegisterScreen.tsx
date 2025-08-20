@@ -32,7 +32,7 @@ type FormValues = {
   fullName: string;
   companyName?: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber?: string | null;
   password: string;
   confirmPassword: string;
 };
@@ -74,7 +74,7 @@ const Register: React.FC = () => {
       {
         full_name: values.fullName,
         company_name: values.companyName as string,
-        mobile_number: values.phoneNumber,
+        mobile_number: values.phoneNumber || '',
         password: values.password,
         email: values.email,
       },
@@ -135,7 +135,7 @@ const Register: React.FC = () => {
                 name="phoneNumber"
                 keyboardType="phone-pad"
                 editable={!isLoading}
-                label={`*${t('registerFieldFields.phoneNumber')}`}
+                label={t('registerFieldFields.phoneNumber')}
                 placeholder={t('registerFieldFields.phoneNumberPlaceHolder')}
               />
               <FormInput
