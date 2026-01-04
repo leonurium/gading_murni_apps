@@ -65,6 +65,12 @@ export const changePasswordValidationSchema = () =>
       ),
   });
 
+// Default coordinates: Jakarta, Indonesia
+const DEFAULT_COORDINATES = {
+  latitude: -6.2088,
+  longitude: 106.8456,
+};
+
 export const locationInitialForm: LocationForm = {
   province: {code: '', province: ''},
   regency: {code: '', province: '', regency: '', type: ''},
@@ -80,6 +86,7 @@ export const locationInitialForm: LocationForm = {
     name: '',
     updated_at: '',
   },
+  longlat: DEFAULT_COORDINATES,
 };
 
 export const locationValidationSchema = () =>

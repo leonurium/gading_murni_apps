@@ -78,7 +78,7 @@ const Location: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (location) {
+    if (location && location.latitude && location.longitude) {
       setInitialValues({
         ...initialValues,
         longlat: location,
@@ -143,22 +143,31 @@ const Location: React.FC = () => {
         validationSchema={formValidationSchema}
         enableReinitialize={true}
         onSubmit={onFieldSubmit}>
-        {({handleSubmit, values, setFieldValue}) => (
+        {({handleSubmit, values, setFieldValue}) => {
+          // Ensure coordinates are valid numbers, fallback to initial values
+          const latitude = values.longlat?.latitude && !isNaN(Number(values.longlat.latitude))
+            ? Number(values.longlat.latitude)
+            : locationInitialForm.longlat?.latitude || -6.2088;
+          const longitude = values.longlat?.longitude && !isNaN(Number(values.longlat.longitude))
+            ? Number(values.longlat.longitude)
+            : locationInitialForm.longlat?.longitude || 106.8456;
+
+          return (
           <>
             {!mapLoading ? (
               <MapView
                 provider={PROVIDER_GOOGLE}
                 style={{flex: 0.4}}
                 region={{
-                  latitude: Number(values.longlat?.latitude),
-                  longitude: Number(values.longlat?.longitude),
+                  latitude,
+                  longitude,
                   latitudeDelta: 0.01,
                   longitudeDelta: 0.005,
                 }}>
                 <Marker
                   coordinate={{
-                    latitude: Number(values.longlat?.latitude),
-                    longitude: Number(values.longlat?.longitude),
+                    latitude,
+                    longitude,
                   }}
                   title={t('myLocationLabel')}
                 />
@@ -333,7 +342,8 @@ const Location: React.FC = () => {
               </ScrollView>
             </View>
           </>
-        )}
+          );
+        }}
       </Formik>
     </View>
   );

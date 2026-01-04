@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Routes from './src/navigations/Routes';
 import {ThemeProvider} from './src/constants/ThemeContext';
-import {SafeAreaView} from './src/components';
+import {SafeAreaView, NetworkLoggerButton} from './src/components';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -101,6 +101,7 @@ const App: React.FC = () => {
               <ThemeProvider>
                 <FirebaseProvider onError={handleFirebaseError}>
                   <Routes />
+                  <NetworkLoggerButton />
                 </FirebaseProvider>
               </ThemeProvider>
             </QueryClientProvider>

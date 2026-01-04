@@ -11,6 +11,7 @@ import {ApiResponse} from '../@types/apiResponse';
 import Toast from 'react-native-simple-toast';
 import {config} from '../constants/Configs';
 import {navigationRef} from '../navigations/navigationService';
+import {startNetworkLogging} from 'react-native-network-logger';
 
 interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
   headers: AxiosRequestHeaders;
@@ -81,5 +82,10 @@ const ApiClient = setupInterceptors(
     timeout: 60000,
   }),
 );
+
+// Start network logging for debugging (only in DEV mode)
+if (__DEV__) {
+  startNetworkLogging();
+}
 
 export default ApiClient;
